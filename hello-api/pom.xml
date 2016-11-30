@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.example</groupId>
-        <artifactId>lagom-java</artifactId>
+        <artifactId>lagom-java-ec2</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
