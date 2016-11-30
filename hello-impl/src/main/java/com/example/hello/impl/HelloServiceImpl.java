@@ -22,12 +22,12 @@ import com.example.hello.impl.HelloCommand.*;
  */
 public class HelloServiceImpl implements HelloService {
 
-//  private final PersistentEntityRegistry persistentEntityRegistry;
+  private final PersistentEntityRegistry persistentEntityRegistry;
 
-//  @Inject
-  public HelloServiceImpl() {
-//    this.persistentEntityRegistry = persistentEntityRegistry;
-//    persistentEntityRegistry.register(HelloEntity.class);
+  @Inject
+  public HelloServiceImpl(PersistentEntityRegistry persistentEntityRegistry) {
+    this.persistentEntityRegistry = persistentEntityRegistry;
+    persistentEntityRegistry.register(HelloEntity.class);
   }
 
   @Override
@@ -35,11 +35,11 @@ public class HelloServiceImpl implements HelloService {
     return request -> {
 
 
-      return CompletableFuture.completedFuture("FOOO!");
+//      return CompletableFuture.completedFuture("FOOO!");
       // Look up the hello world entity for the given ID.
-//      PersistentEntityRef<HelloCommand> ref = persistentEntityRegistry.refFor(HelloEntity.class, id);
+      PersistentEntityRef<HelloCommand> ref = persistentEntityRegistry.refFor(HelloEntity.class, id);
       // Ask the entity the Hello command.
-//      return ref.ask(new Hello(id, Optional.empty()));
+      return ref.ask(new Hello(id, Optional.empty()));
     };
   }
 
@@ -47,11 +47,11 @@ public class HelloServiceImpl implements HelloService {
   public ServiceCall<GreetingMessage, Done> useGreeting(String id) {
     return request -> {
 
-      return CompletableFuture.completedFuture(Done.getInstance());
+      //return CompletableFuture.completedFuture(Done.getInstance());
       // Look up the hello world entity for the given ID.
-//      PersistentEntityRef<HelloCommand> ref = persistentEntityRegistry.refFor(HelloEntity.class, id);
+      PersistentEntityRef<HelloCommand> ref = persistentEntityRegistry.refFor(HelloEntity.class, id);
       // Tell the entity to use the greeting message specified.
-//      return ref.ask(new UseGreetingMessage(request.message));
+      return ref.ask(new UseGreetingMessage(request.message));
     };
 
   }
