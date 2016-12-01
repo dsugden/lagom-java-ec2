@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.Collections;
 import java.util.Optional;
 
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -25,7 +27,9 @@ public class HelloEntityTest {
 
   @BeforeClass
   public static void setup() {
-    system = ActorSystem.create("HelloEntityTest");
+
+   Config conf = ConfigFactory.parseString("akka.actor.provider = akka.cluster.ClusterActorRefProvider ");
+    system = ActorSystem.create("HelloEntityTest", conf);
   }
 
   @AfterClass

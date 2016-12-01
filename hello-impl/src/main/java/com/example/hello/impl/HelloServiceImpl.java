@@ -11,11 +11,14 @@ import com.lightbend.lagom.javadsl.persistence.PersistentEntityRegistry;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 
 import javax.inject.Inject;
 import com.example.hello.api.GreetingMessage;
 import com.example.hello.api.HelloService;
 import com.example.hello.impl.HelloCommand.*;
+
+import static java.lang.System.out;
 
 /**
  * Implementation of the HelloService.
@@ -39,7 +42,19 @@ public class HelloServiceImpl implements HelloService {
       // Look up the hello world entity for the given ID.
       PersistentEntityRef<HelloCommand> ref = persistentEntityRegistry.refFor(HelloEntity.class, id);
       // Ask the entity the Hello command.
-      return ref.ask(new Hello(id, Optional.empty()));
+
+
+      CompletionStage<String> stage  = ref.ask(new Hello(id, Optional.empty()));
+
+
+      CompletionStage<String> withException = stage.exceptionally( ex -> {
+
+        out.println("^^^^^^^^^^^^^^^^^^^^");
+        return "ex.getLocalizedMessage()";
+
+      }  );
+
+      return withException;
     };
   }
 

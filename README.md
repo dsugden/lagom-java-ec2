@@ -33,26 +33,32 @@
     
     The following in hello-impl/application.conf set this up:
     
-    
-    play{
-      akka.actor-system = "MyService"
-    }
-    
     akka{
-      cluster.seed-nodes = ["akka.tcp://MyService@127.0.0.1:2552"]
       remote {
-        log-remote-lifecycle-events = off
         netty.tcp {
           hostname = "127.0.0.1"
-          port = 2552
         }
       }
     }
+    
+    and in hello-impl/start.sh
+    
+    CONFIG="-Dhttps.port=9443 -Dplay.crypto.secret=$PLAY_SECRET  -Dakka.cluster.seed-nodes.0=akka.tcp://application@127.0.0.1:2552 -Dakka.remote.netty.tcp.port=2552"
+    
+    java -cp "target/hello-v1/hello/lib/*" $JAVA_OPTS $CONFIG play.core.server.ProdServerStart
+    
 
 
 ### Maven package and run
 
-   hello-impl/start.sh  will package into a zip, unzip, and run.
+   start first node:
+   
+   hello-impl/start.sh  (zip, unzip, and run).
+   
+   start second node:
+   
+   hello-impl/start2.sh
+   
 
 
 
