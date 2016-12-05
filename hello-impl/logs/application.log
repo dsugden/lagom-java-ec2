@@ -1,0 +1,36 @@
+2016-12-05 16:08:57,438 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-2 - Slf4jLogger started
+2016-12-05 16:08:57,687 [INFO] from akka.remote.Remoting in application-akka.actor.default-dispatcher-5 - Starting remoting
+2016-12-05 16:08:57,783 [INFO] from akka.remote.Remoting in application-akka.actor.default-dispatcher-2 - Remoting started; listening on addresses :[akka.tcp://application@127.0.0.1:2552]
+2016-12-05 16:08:57,791 [INFO] from akka.cluster.Cluster(akka://application) in application-akka.actor.default-dispatcher-2 - Cluster Node [akka.tcp://application@127.0.0.1:2552] - Starting up...
+2016-12-05 16:08:57,846 [INFO] from akka.cluster.Cluster(akka://application) in application-akka.actor.default-dispatcher-2 - Cluster Node [akka.tcp://application@127.0.0.1:2552] - Registered cluster JMX MBean [akka:type=Cluster]
+2016-12-05 16:08:57,846 [INFO] from akka.cluster.Cluster(akka://application) in application-akka.actor.default-dispatcher-2 - Cluster Node [akka.tcp://application@127.0.0.1:2552] - Started up successfully
+2016-12-05 16:08:57,875 [INFO] from akka.cluster.Cluster(akka://application) in application-akka.actor.default-dispatcher-16 - Cluster Node [akka.tcp://application@127.0.0.1:2552] - Node [akka.tcp://application@127.0.0.1:2552] is JOINING, roles []
+2016-12-05 16:08:57,883 [INFO] from akka.cluster.Cluster(akka://application) in application-akka.actor.default-dispatcher-16 - Cluster Node [akka.tcp://application@127.0.0.1:2552] - Leader is moving node [akka.tcp://application@127.0.0.1:2552] to [Up]
+2016-12-05 16:08:58,351 [INFO] from akka.actor.EmptyLocalActorRef in application-akka.actor.default-dispatcher-4 - Message [akka.cluster.sharding.ShardCoordinator$Internal$Register] from Actor[akka://application/system/sharding/idm#374261353] to Actor[akka://application/system/sharding/idmCoordinator/singleton/coordinator] was not delivered. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2016-12-05 16:08:58,360 [INFO] from akka.cluster.singleton.ClusterSingletonManager in application-akka.actor.default-dispatcher-2 - Singleton manager starting singleton actor [akka://application/system/sharding/idmCoordinator/singleton]
+2016-12-05 16:08:58,360 [INFO] from akka.cluster.singleton.ClusterSingletonManager in application-akka.actor.default-dispatcher-2 - ClusterSingletonManager state change [Start -> Oldest]
+2016-12-05 16:08:58,373 [INFO] from akka.cluster.sharding.DDataShardCoordinator in application-akka.actor.default-dispatcher-3 - Sharding Coordinator was moved to the active state State(Map(),Map(),Set(),Set(),false)
+2016-12-05 16:08:58,471 [INFO] from org.hibernate.validator.internal.util.Version in main - HV000001: Hibernate Validator 5.2.4.Final
+2016-12-05 16:08:58,532 [INFO] from play.api.Play in main - Application started (Prod)
+2016-12-05 16:08:58,622 [INFO] from play.core.server.NettyServer in main - Listening for HTTPS on /0:0:0:0:0:0:0:0:9443
+2016-12-05 16:09:57,033 [INFO] from akka.remote.RemoteActorRefProvider$RemotingTerminator in application-akka.actor.default-dispatcher-4 - Shutting down remote daemon.
+2016-12-05 16:09:57,034 [INFO] from akka.remote.RemoteActorRefProvider$RemotingTerminator in application-akka.actor.default-dispatcher-4 - Remote daemon shut down; proceeding with flushing remote transports.
+2016-12-05 16:09:57,048 [INFO] from akka.remote.RemoteActorRefProvider$RemotingTerminator in application-akka.actor.default-dispatcher-4 - Remoting shut down.
+2016-12-05 16:10:12,747 [INFO] from akka.event.slf4j.Slf4jLogger in application-akka.actor.default-dispatcher-2 - Slf4jLogger started
+2016-12-05 16:10:13,009 [INFO] from akka.remote.Remoting in application-akka.actor.default-dispatcher-2 - Starting remoting
+2016-12-05 16:10:13,104 [INFO] from akka.remote.Remoting in application-akka.actor.default-dispatcher-2 - Remoting started; listening on addresses :[akka.tcp://application@127.0.0.1:2552]
+2016-12-05 16:10:13,113 [INFO] from akka.cluster.Cluster(akka://application) in application-akka.actor.default-dispatcher-2 - Cluster Node [akka.tcp://application@127.0.0.1:2552] - Starting up...
+2016-12-05 16:10:13,168 [INFO] from akka.cluster.Cluster(akka://application) in application-akka.actor.default-dispatcher-2 - Cluster Node [akka.tcp://application@127.0.0.1:2552] - Registered cluster JMX MBean [akka:type=Cluster]
+2016-12-05 16:10:13,169 [INFO] from akka.cluster.Cluster(akka://application) in application-akka.actor.default-dispatcher-2 - Cluster Node [akka.tcp://application@127.0.0.1:2552] - Started up successfully
+2016-12-05 16:10:13,198 [INFO] from akka.cluster.Cluster(akka://application) in application-akka.actor.default-dispatcher-15 - Cluster Node [akka.tcp://application@127.0.0.1:2552] - Node [akka.tcp://application@127.0.0.1:2552] is JOINING, roles []
+2016-12-05 16:10:13,206 [INFO] from akka.cluster.Cluster(akka://application) in application-akka.actor.default-dispatcher-15 - Cluster Node [akka.tcp://application@127.0.0.1:2552] - Leader is moving node [akka.tcp://application@127.0.0.1:2552] to [Up]
+2016-12-05 16:10:13,639 [INFO] from akka.actor.EmptyLocalActorRef in application-akka.actor.default-dispatcher-3 - Message [akka.cluster.sharding.ShardCoordinator$Internal$Register] from Actor[akka://application/system/sharding/idm#1087080783] to Actor[akka://application/system/sharding/idmCoordinator/singleton/coordinator] was not delivered. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2016-12-05 16:10:13,650 [INFO] from akka.cluster.singleton.ClusterSingletonManager in application-akka.actor.default-dispatcher-3 - Singleton manager starting singleton actor [akka://application/system/sharding/idmCoordinator/singleton]
+2016-12-05 16:10:13,650 [INFO] from akka.cluster.singleton.ClusterSingletonManager in application-akka.actor.default-dispatcher-3 - ClusterSingletonManager state change [Start -> Oldest]
+2016-12-05 16:10:13,662 [INFO] from akka.cluster.sharding.DDataShardCoordinator in application-akka.actor.default-dispatcher-4 - Sharding Coordinator was moved to the active state State(Map(),Map(),Set(),Set(),false)
+2016-12-05 16:10:13,754 [INFO] from org.hibernate.validator.internal.util.Version in main - HV000001: Hibernate Validator 5.2.4.Final
+2016-12-05 16:10:13,814 [INFO] from play.api.Play in main - Application started (Prod)
+2016-12-05 16:10:13,896 [INFO] from play.core.server.NettyServer in main - Listening for HTTPS on /0:0:0:0:0:0:0:0:9443
+2016-12-05 16:11:56,875 [INFO] from akka.remote.RemoteActorRefProvider$RemotingTerminator in application-akka.actor.default-dispatcher-17 - Shutting down remote daemon.
+2016-12-05 16:11:56,876 [INFO] from akka.remote.RemoteActorRefProvider$RemotingTerminator in application-akka.actor.default-dispatcher-17 - Remote daemon shut down; proceeding with flushing remote transports.
+2016-12-05 16:11:56,890 [INFO] from akka.remote.RemoteActorRefProvider$RemotingTerminator in application-akka.actor.default-dispatcher-17 - Remoting shut down.

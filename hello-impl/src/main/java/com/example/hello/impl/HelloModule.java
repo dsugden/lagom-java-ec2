@@ -3,6 +3,7 @@ package com.example.hello.impl;
 import com.example.hello.api.HelloService;
 import com.google.inject.AbstractModule;
 import com.lightbend.lagom.javadsl.server.ServiceGuiceSupport;
+import com.lightbend.lagom.javadsl.api.ServiceLocator;
 
 /**
  * The module that binds the HelloService so that it can be served.
@@ -10,8 +11,7 @@ import com.lightbend.lagom.javadsl.server.ServiceGuiceSupport;
 public class HelloModule extends AbstractModule implements ServiceGuiceSupport {
   @Override
   protected void configure() {
-
-    bindServices(
-            serviceBinding(HelloService.class, HelloServiceImpl.class));
+    bind(ServiceLocator.class).to(ServiceLocatorImpl.class);
+    bindServices(serviceBinding(HelloService.class, HelloServiceImpl.class));
   }
 }
