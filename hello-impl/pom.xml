@@ -20,11 +20,11 @@
             <groupId>com.lightbend.lagom</groupId>
             <artifactId>lagom-javadsl-server_2.11</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.lightbend.lagom</groupId>
-            <artifactId>lagom-javadsl-persistence-jdbc_2.11</artifactId>
-            <version>${lagom.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.lightbend.lagom</groupId>-->
+            <!--<artifactId>lagom-javadsl-persistence-jdbc_2.11</artifactId>-->
+            <!--<version>${lagom.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -46,6 +46,14 @@
             <version>${lagom.version}</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play-java-ws_2.11</artifactId>
+            <version>2.5.4</version>
+        </dependency>
+
+
         <dependency>
             <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-distributed-data-experimental_2.11</artifactId>
@@ -59,6 +67,16 @@
         <dependency>
             <groupId>com.lightbend.lagom</groupId>
             <artifactId>lagom-javadsl-testkit_2.11</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-cluster-sharding_2.11</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lightbend.lagom</groupId>
+            <artifactId>lagom-javadsl-persistence_2.11</artifactId>
+            <version>RELEASE</version>
         </dependency>
     </dependencies>
 

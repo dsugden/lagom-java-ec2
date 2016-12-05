@@ -9,7 +9,6 @@
     <modules>
         <module>hello-api</module>
         <module>hello-impl</module>
-        <module>cassandra-config</module>
     </modules>
 
     <build>
@@ -74,11 +73,11 @@
                 <!--<artifactId>lagom-javadsl-persistence-cassandra_2.11</artifactId>-->
                 <!--<version>${lagom.version}</version>-->
             <!--</dependency>-->
-            <dependency>
-                <groupId>com.lightbend.lagom</groupId>
-                <artifactId>lagom-javadsl-persistence-jdbc_2.11</artifactId>
-                <version>${lagom.version}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.lightbend.lagom</groupId>-->
+                <!--<artifactId>lagom-javadsl-persistence-jdbc_2.11</artifactId>-->
+                <!--<version>${lagom.version}</version>-->
+            <!--</dependency>-->
 
             <dependency>
                 <groupId>com.lightbend.lagom</groupId>

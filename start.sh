@@ -9,6 +9,6 @@ CONFIG="-Dhttps.port=9443 -Dplay.crypto.secret=$PLAY_SECRET  -Dakka.cluster.seed
 
 mvn clean package
 
-tar -xvf target/hello-impl-1.0-SNAPSHOT-hello-assembly.tar.gz -C target
+unzip hello-impl/target/hello-impl-1.0-SNAPSHOT-hello-assembly.zip -d target
 
-java -cp "target/hello-v1/hello/lib/*" $JAVA_OPTS $CONFIG play.core.server.ProdServerStart
+java -cp "hello-impl/target/hello-v1/hello/lib/*" $JAVA_OPTS $CONFIG play.core.server.ProdServerStart
