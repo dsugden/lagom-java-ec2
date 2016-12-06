@@ -22,7 +22,7 @@ Simulating a non conductR build
     * Grant this role permissions to playdb
     
     
-    In hello-impl/application.conf the following is used for db connection:
+    In saga-impl/application.conf the following is used for db connection:
     
     db.default {
       driver = "org.postgresql.Driver"
@@ -42,7 +42,7 @@ Simulating a non conductR build
     services in one cluster).
     
     
-    The following in hello-impl/application.conf set this up:
+    The following in saga-impl/application.conf set this up:
     
     akka{
       remote {
@@ -52,11 +52,11 @@ Simulating a non conductR build
       }
     }
     
-    and in hello-impl/start.sh
+    and in saga-impl/start.sh
     
     CONFIG="-Dhttps.port=9443 -Dplay.crypto.secret=$PLAY_SECRET  -Dakka.cluster.seed-nodes.0=akka.tcp://application@127.0.0.1:2552 -Dakka.remote.netty.tcp.port=2552"
     
-    java -cp "target/hello-v1/hello/lib/*" $JAVA_OPTS $CONFIG play.core.server.ProdServerStart
+    java -cp "target/saga-v1/saga/lib/*" $JAVA_OPTS $CONFIG play.core.server.ProdServerStart
     
 
 
@@ -64,11 +64,11 @@ Simulating a non conductR build
 
    start first node from root dir:
    
-   sh hello-impl/start.sh  (zip, unzip, and run).
+   sh saga-impl/start.sh  (zip, unzip, and run).
    
    start second node:
    
-   sh hello-impl/start2.sh
+   sh saga-impl/start2.sh
    
 
 

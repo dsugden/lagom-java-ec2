@@ -7,25 +7,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>hello-api</module>
-        <module>hello-impl</module>
+        <module>saga-api</module>
+        <module>saga-impl</module>
     </modules>
 
     <build>
         <plugins>
-            <!--<plugin>-->
-                <!--<artifactId>maven-assembly-plugin</artifactId>-->
-                <!--<version>3.0.0</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>make-assembly</id> &lt;!&ndash; this is used for inheritance merges &ndash;&gt;-->
-                        <!--<phase>package</phase> &lt;!&ndash; bind to the packaging phase &ndash;&gt;-->
-                        <!--<goals>-->
-                            <!--<goal>single</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>com.lightbend.lagom</groupId>
                 <artifactId>lagom-maven-plugin</artifactId>
