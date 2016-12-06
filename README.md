@@ -1,4 +1,15 @@
-## lagom-java-ec2 with jdbc or cassandra, custom deploy (no conductR)
+## Experimenting with lagom-java-ec2 with jdbc or cassandra, custom deploy (no conductR)
+
+
+Using Maven.
+
+Currently not using any PersistentEntities, but using akka cluster directly. Using cluster sharding backed
+by Akka Distributed Data.
+
+Using straight up old school jdbc to update a postgres db.
+
+Simulating a non conductR build
+
 
 
 ### JDBC
@@ -51,13 +62,13 @@
 
 ### Maven package and run
 
-   start first node:
+   start first node from root dir:
    
-   hello-impl/start.sh  (zip, unzip, and run).
+   sh hello-impl/start.sh  (zip, unzip, and run).
    
    start second node:
    
-   hello-impl/start2.sh
+   sh hello-impl/start2.sh
    
 
 
