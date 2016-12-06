@@ -22,14 +22,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="hello-api" />
-        <module name="hello-impl" />
+        <module name="saga-api" />
+        <module name="saga-impl" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="hello-api" target="1.8" />
-      <module name="hello-impl" target="1.8" />
       <module name="lagom-java-ec2" target="1.8" />
+      <module name="saga-api" target="1.8" />
+      <module name="saga-impl" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

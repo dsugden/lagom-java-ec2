@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rm hello-impl/RUNNING_PID
+rm saga-impl/RUNNING_PID
 
 JVM_OPTS="-Xmx128m -Xms128m"
 
@@ -11,8 +11,8 @@ CONFIG="-Dhttps.port=9443 -Dplay.crypto.secret=$PLAY_SECRET  -Dakka.cluster.seed
 
 mvn clean package
 
-cd hello-impl
+cd saga-impl
 
-tar -xvf target/hello-impl-1.0-SNAPSHOT-hello-assembly.tar.gz -C target
+tar -xvf target/saga-impl-1.0-SNAPSHOT-saga-assembly.tar.gz -C target
 
-java -cp "target/hello-v1/hello/lib/*" $JAVA_OPTS $CONFIG play.core.server.ProdServerStart
+java -cp "target/saga-v1/saga/lib/*" $JAVA_OPTS $CONFIG play.core.server.ProdServerStart

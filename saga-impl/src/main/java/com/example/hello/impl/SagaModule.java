@@ -10,13 +10,13 @@ import play.Environment;
 /**
  * The module that binds the SagaService so that it can be served.
  */
-public class HelloModule extends AbstractModule implements ServiceGuiceSupport {
+public class SagaModule extends AbstractModule implements ServiceGuiceSupport {
 
 
   private final Environment environment;
   private final Configuration configuration;
 
-  public HelloModule(Environment environment, Configuration configuration) {
+  public SagaModule(Environment environment, Configuration configuration) {
     this.environment = environment;
     this.configuration = configuration;
   }

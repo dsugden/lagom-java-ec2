@@ -6,14 +6,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hello-impl</artifactId>
+    <artifactId>saga-impl</artifactId>
 
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>hello-api</artifactId>
+            <artifactId>saga-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -91,7 +91,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>hello-impl</id>
+                        <id>saga-impl</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
