@@ -1,4 +1,4 @@
-## Experimenting with lagom-java-ec2 with jdbc or cassandra, custom deploy (no conductR)
+## Experimenting with lagom-java, custom deploy (no conductR)
 
 
 Using Maven.
