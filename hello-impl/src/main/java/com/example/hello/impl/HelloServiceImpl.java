@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
 
 import static akka.pattern.Patterns.ask;
+import static java.lang.System.out;
 
 /**
  * Implementation of the HelloService.
@@ -39,23 +40,32 @@ public class HelloServiceImpl implements HelloService {
 
             @Override
             public String entityId(Object message) {
-                if (message instanceof IDMActor.IDMRequest)
-                    return "IDMRequest";
+                if (message instanceof IDMRequest){
+                    String entityId = ((IDMRequest)message).id;
+                    out.println("-----  entityId " + entityId);
+                    return entityId;
+                }
+
+
                 else
                     return null;
             }
 
             @Override
             public Object entityMessage(Object message) {
-                if (message instanceof IDMActor.IDMRequest)
-                    return (IDMActor.IDMRequest)message;
+                if (message instanceof IDMRequest)
+                    return (IDMRequest)message;
                 else
                     return message;
             }
 
             @Override
             public String shardId(Object message) {
-                return "idm";
+
+                int v = ((IDMRequest)message).id.hashCode() % 2;
+
+                out.println("-----------  shardId "  + v);
+                return String.valueOf(v);
             }
 
         };
@@ -77,7 +87,7 @@ public class HelloServiceImpl implements HelloService {
 
         return request ->  {
 
-            Future<Object> f = ask(idmRegion,new IDMActor.IDMRequest(id),1000);
+            Future<Object> f = ask(idmRegion,new IDMRequest(id),1000);
             CompletionStage<Object> comp =  FutureConverters.toJava(f);
             return comp.thenApply(x -> x.toString());
         };

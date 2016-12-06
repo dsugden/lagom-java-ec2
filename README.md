@@ -62,6 +62,17 @@
 
 
 
+### debugging in intellij
+    
+    
+    start server in debug mode on 5555:
+    
+    env MAVEN_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5555" mvn lagom:runAll
+    
+    create a maven remote debug configuration in intellij, attaching to 5555
+    
+    
+    
     
     
     

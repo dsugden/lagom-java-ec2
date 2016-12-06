@@ -1,20 +1,17 @@
 package com.example.hello.impl;
 
-import akka.actor.AbstractActor;
 import akka.actor.AbstractFSM;
-import akka.actor.AbstractLoggingActor;
 import play.libs.ws.WSClient;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.util.PriorityQueue;
 import java.util.Properties;
 import java.util.Queue;
-import java.util.UUID;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 
-public class IDMActor extends AbstractFSM<IDMActor.IDMState, Queue<IDMActor.IDMRequest>> {
+public class IDMActor extends AbstractFSM<IDMActor.IDMState, Queue<IDMRequest>> {
 
 
 
@@ -23,12 +20,15 @@ public class IDMActor extends AbstractFSM<IDMActor.IDMState, Queue<IDMActor.IDMR
 
     public IDMActor(WSClient client) {
 
-        startWith(state, new PriorityQueue<IDMRequest>());
+        startWith(state, new ConcurrentLinkedQueue<IDMRequest>());
 
 
         when(state,
-                matchEvent(IDMRequest.class, PriorityQueue.class,
+                matchEvent(IDMRequest.class, ConcurrentLinkedQueue.class,
                         (request, queue) -> {
+
+                            System.out.println("-----------------   request " + request);
+
                             queue.add(request);
                             sender().tell("good", self());
                             System.out.println("-----------------   XXX");
@@ -73,29 +73,5 @@ public class IDMActor extends AbstractFSM<IDMActor.IDMState, Queue<IDMActor.IDMR
     public static final class IDMState{}
 
 
-    public static final class IDMRequest{
-
-        public String id;
-
-        public IDMRequest(String id) {
-            this.id = id;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-
-            IDMRequest that = (IDMRequest) o;
-
-            return id != null ? id.equals(that.id) : that.id == null;
-
-        }
-
-        @Override
-        public int hashCode() {
-            return id != null ? id.hashCode() : 0;
-        }
-    }
 
 }
