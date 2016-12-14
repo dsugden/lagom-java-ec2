@@ -1,6 +1,9 @@
 package com.example.hello.impl;
 
 import akka.actor.AbstractFSM;
+import akka.actor.Props;
+import play.db.DB;
+import play.db.Database;
 import play.libs.ws.WSClient;
 
 import java.sql.Connection;
@@ -15,10 +18,17 @@ public class SagaActor extends AbstractFSM<SagaActor.SagaState, Queue<SagaReques
 
 
 
+    public static Props props(WSClient client,Database db){
+        return Props.create(SagaActor.class, () -> new SagaActor(client, db));
+    }
+
+
     private SagaState state = new SagaState();
+    private Database db;
 
+    public SagaActor(WSClient client,Database db) {
 
-    public SagaActor(WSClient client) {
+        this.db = db;
 
         startWith(state, new ConcurrentLinkedQueue<SagaRequest>());
 
@@ -42,16 +52,8 @@ public class SagaActor extends AbstractFSM<SagaActor.SagaState, Queue<SagaReques
     private void write(){
         try{
 
-        Class.forName("org.postgresql.Driver");
-        String URL = "jdbc:postgresql://localhost:5433/playdb";
-        Properties info = new Properties( );
-        info.put( "user", "playuser" );
-        info.put( "password", "playuser" );
-
-            Connection conn = DriverManager.getConnection(URL, info);
-            Statement stmt = null;
-
-            stmt = conn.createStatement();
+            Connection conn = db.getConnection();
+            Statement stmt = conn.createStatement();
             String sql = "CREATE TABLE If NOT EXISTS TESTXX " +
                     "(id VARCHAR(128) not NULL, " +
                     " first VARCHAR(255), " +

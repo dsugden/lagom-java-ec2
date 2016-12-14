@@ -13,6 +13,7 @@ import akka.cluster.sharding.ShardRegion;
 import com.example.hello.api.SagaService;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
 import play.api.inject.Injector;
+import play.db.Database;
 import play.libs.ws.WSClient;
 import scala.compat.java8.FutureConverters;
 import scala.concurrent.Future;
@@ -20,7 +21,7 @@ import scala.concurrent.Future;
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
 
-import static akka.pattern.Patterns.ask;
+import static akka.pattern.PatternsCS.ask;
 import static java.lang.System.out;
 
 /**
@@ -29,7 +30,7 @@ import static java.lang.System.out;
 public class SagaServiceImpl implements SagaService {
 
     private final ActorSystem system;
-    private final ActorRef idmRegion;
+    private final ActorRef sagaRegion;
 
     @Inject
     public SagaServiceImpl(ActorSystem system, Injector injector) {
@@ -45,8 +46,9 @@ public class SagaServiceImpl implements SagaService {
                     out.println("-----  entityId " + entityId);
                     return entityId;
                 }
-
-
+                else if (message instanceof SomeOtherMessage) {
+                    return "SomeOtherActor";
+                }
                 else
                     return null;
             }
@@ -61,19 +63,29 @@ public class SagaServiceImpl implements SagaService {
 
             @Override
             public String shardId(Object message) {
+                String id = null;
+                if (message instanceof SagaRequest){
+                    String entityId = ((SagaRequest)message).id;
+                    out.println("-----  entityId " + entityId);
+                    id =  "saga";
+                }
+                else if (message instanceof SomeOtherMessage) {
+                    id =  "SomeOtherActor";
+                }
+                else
+                    id =  null;
 
-                int v = ((SagaRequest)message).id.hashCode() % 2;
+                out.println("id = " + id);
 
-                out.println("-----------  shardId "  + v);
-                return String.valueOf(v);
+                return id;
             }
+
 
         };
 
 
         ClusterShardingSettings settings = ClusterShardingSettings.create(system);
-        this.idmRegion = ClusterSharding.get(system).start("idm", Props.create(SagaActor.class,
-                () -> new SagaActor(injector.instanceOf(WSClient.class))), settings, messageExtractor);
+        this.sagaRegion = ClusterSharding.get(system).start("saga", DispatcherActor.props(injector), settings, messageExtractor);
 
 
     }
@@ -87,9 +99,12 @@ public class SagaServiceImpl implements SagaService {
 
         return request ->  {
 
-            Future<Object> f = ask(idmRegion,new SagaRequest(id),1000);
-            CompletionStage<Object> comp =  FutureConverters.toJava(f);
-            return comp.thenApply(x -> x.toString());
+            CompletionStage<Object> f = ask(sagaRegion,new SagaRequest(id),1000);
+
+            CompletionStage<Object> g = ask(sagaRegion,new SomeOtherMessage(2),1000);
+
+
+            return f.thenCombine(g, (a,b) -> a.toString() + b.toString() );
         };
     }
 
